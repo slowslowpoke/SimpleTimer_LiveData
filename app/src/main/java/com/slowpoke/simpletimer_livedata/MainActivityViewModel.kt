@@ -7,12 +7,27 @@ import androidx.lifecycle.ViewModel
 
 class MainActivityViewModel: ViewModel() {
     private lateinit var timer: CountDownTimer
+
     private val _seconds = MutableLiveData<Int>()
     val seconds: LiveData<Int>
         get() = _seconds
 
+
+    private val _timerValue = MutableLiveData<Long>()
+
+    fun changeTimerValue(newTimerValue: Long){
+        _timerValue.value = newTimerValue
+    }
+
+
+
+    private val _isFinished = MutableLiveData<Boolean>()
+    val isFinished: LiveData<Boolean>
+        get() = _isFinished
+
     fun startTimer(){
-        timer = object: CountDownTimer(10000, 1000){
+        _isFinished.value = false
+        timer = object: CountDownTimer(_timerValue.value!!, 1000){
 
             override fun onTick(millisUntilFinished: Long) {
                 val timeLeft = millisUntilFinished / 1000
@@ -20,6 +35,7 @@ class MainActivityViewModel: ViewModel() {
             }
 
             override fun onFinish() {
+                _isFinished.value = true
             }
 
         }.start()
