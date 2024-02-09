@@ -1,3 +1,9 @@
 <resources>
-    <string name="app_name">SimpleTimer_LiveData</string>
+    <string name="app_name">Basic Timer</string>
+    <string name="time_in_seconds">Time in seconds</string>
+    <string name="resume">Resume</string>
+    <string name="pause">Pause</string>
+    <string name="invalid_input">Invalid input</string>
+    <string name="start">Start</string>
+    <string name="stop">Stop</string>
 </resources>
